@@ -1,21 +1,21 @@
 :warning: Everything between << >> needs to be replaced (remove << >> after replacing)
 
-# << Project Title >>
+# << Rogue Like platformer >>
 ## CS 110 Final Project
-### << Semester, Year >>
+### << 1st Semester, 1st Year >>
 ### [Assignment Description](https://drive.google.com/open?id=1HLIk-539N9KiAAG1224NWpFyEl4RsPVBwtBZ9KbjicE)
 
 << [https://github.com/<repo>](#) >>
 
 << [link to demo presentation slides](#) >>
 
-### Team: << team name >>
-#### << Team Members >>
+### Team: << Feel Free to Contribute>>
+#### << Anthony Goncalves, Richard Imbro and James Klingaman >>
 
 ***
 
 ## Project Description
-<< Give an overview of your project >>
+<<A 2d platformer in which several of the sublevels within each level change every time the game is run >>
 
 ***    
 
