@@ -40,12 +40,12 @@
         * ![class diagram](assets/readMeData/flow_chart.png)
     * This does not need to be overly detailed, but should show how your code fits into the Model/View/Controller paradigm.
 * Classes
-    * <<Hero Class: Will be used as the main playable character that will be to run, jump and shout to finish the level>>
-    * <<Platform Class: Will be used as what the player will stand on to progress through each level
-    * <<Spike Class: Will be used as an obstruction that will result in the player's death  >>
-    * <<Enemy Class: Will be used to block the enemy from finishing the level through causing the player to die on contact>>
-    * <<Ground Class: Used as the ground of the level the player will walk on however can also be used as an obstacle such as lava floor depending on slight modification>>
-    * <<Level Class: Code for each individual sub level within the code >>
+    * Hero Class: Will be used as the main playable character that will be to run, jump and shout to finish the level
+    * Platform Class: Will be used as what the player will stand on to progress through each level
+    * Spike Class: Will be used as an obstruction that will result in the player's death
+    * Enemy Class: Will be used to block the enemy from finishing the level through causing the player to die on contact
+    * Ground Class: Used as the ground of the level the player will walk on however can also be used as an obstacle such as lava floor depending on slight modification
+    * Level Class: Code for each individual sub level within the code
 
 ***
 
