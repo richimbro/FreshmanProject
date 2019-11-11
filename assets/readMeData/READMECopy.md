@@ -20,13 +20,10 @@
 ***    
 
 ## User Interface Design
-* ![class diagram](assets/readMeData/gui_sketch.png)
+* << A wireframe or drawing of the user interface concept along with a short description of the interface. You should have one for each screen in your program. >>
     * For example, if your program has a start screen, game screen, and game over screen, you should include a wireframe / screenshot / drawing of each one and a short description of the components
 * << You should also have a screenshot of each screen for your final GUI >>
-* << Top Left: Start screen explaining the controls and getting ready to start the level>>
-* << Bottom Left: Game screen featuring the player, level and platforms as well as gears used as lives within the level >>
-* << Top Right: Win screen if the player has successfully completed the levels >>
-* << Bottom Right: Failure screen if the player runs out of lives>>
+
 ***        
 
 ## Program Design
@@ -37,30 +34,25 @@
         * a short description of the module
 * Class Interface Design
     * << A simple drawing that shows the class relationships in your code (see below for an example). >>
-        * ![class diagram](assets/readMeData/flow_chart.png)
+        * ![class diagram](assets/class_diagram.jpg)
     * This does not need to be overly detailed, but should show how your code fits into the Model/View/Controller paradigm.
 * Classes
-    * Hero Class: Will be used as the main playable character that will be to run, jump and shout to finish the level
-    * Platform Class: Will be used as what the player will stand on to progress through each level
-    * Spike Class: Will be used as an obstruction that will result in the player's death
-    * Enemy Class: Will be used to block the enemy from finishing the level through causing the player to die on contact
-    * Ground Class: Used as the ground of the level the player will walk on however can also be used as an obstacle such as lava floor depending on slight modification
-    * Level Class: Code for each individual sub level within the code
+    * << You should have a list of each of your classes with a description. >>
 
 ***
 
 ## Tasks and Responsibilities
 * You must outline the team member roles and who was responsible for each class/method, both individual and collaborative.
 
-### Software Lead - << Anthony Goncalves >>
+### Software Lead - << name >>
 
 << Worked as integration specialist by... >>
 
-### Front End Specialist - << James Klingaman >>
+### Front End Specialist - << name >>
 
 << Front-end lead conducted significant research on... >>
 
-### Back End Specialist - << Richard Imbro >>
+### Back End Specialist - << name >>
 
 << The back end specialist... >>
 
