@@ -14,11 +14,13 @@ class Enemy(pygame.sprite.Sprite):
         self.health = health
         self.rect.x = x
         self.rect.y = y
-        self.speed = 3
+        self.speed = 10
         self.health = 1
 
-    def shoot(self):
-		
+	def shoot(self): #adjust  this for tracking
+		b = Bullet(self.hero.direction, self.hero.rect.centerx, self.hero.rect.centery)
+		self.bullets.add(b)
+
 
 	def jump(self):
 		while True:
