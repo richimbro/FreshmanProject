@@ -23,11 +23,13 @@ class Controller:
 				self.menuloop()
 			elif(self.STATE == "Exit"):
 				self.endloop()
+			elif(self.STATE == "CONTROL"):
+				self.controlsloop()
 
 	def gameloop(self):
 		pygame.key.set_repeat(1,50)
 		while self.STATE == "GAME":
-			self.background.fill((149, 100, 12))
+			self.background.fill((45, 18, 224))
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					sys.exit()
@@ -45,10 +47,10 @@ class Controller:
 			self.clock.tick(60)
 
 	def menuloop(self):
-		self.background.fill((149, 100, 12))
+		self.background.fill((224, 28, 18))
 		self.screen.blit(self.background,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
-		message = myfont.render("Use the arrow keys and space to move. Press space to start", False, (0,0,0))
+		message = myfont.render("Press space to start. Press C for Instructions", False, (0,0,0))
 		self.screen.blit(message, (0, self.height/2))
 		pygame.display.update()
 		while (self.STATE == "MENU"):
@@ -58,6 +60,26 @@ class Controller:
 				elif event.type == pygame.KEYDOWN:
 					if (event.key == pygame.K_SPACE):
 						self.STATE = "GAME"
+					if (event.key == pygame.K_c):
+						self.STATE = "CONTROL"
+
+	def controlsloop(self):
+		self.background.fill((69, 245, 66))
+		self.screen.blit(self.background,(0,0))
+		myfont = pygame.font.SysFont(None, 30)
+		message1 = myfont.render("Use the arrow keys and space to move.", False, (0,0,0))
+		self.screen.blit(message1, (0, self.height/2))
+		message2 = myfont.render("Press M for Menu", False, (0,0,0))
+		self.screen.blit(message2, (0, self.height/3))
+		pygame.display.update()
+		while (self.STATE == "CONTROL"):
+			for event in pygame.event.get():
+				if event.type == pygame.QUIT:
+					sys.exit()
+				elif event.type == pygame.KEYDOWN:
+					if (event.key == pygame.K_m):
+						self.STATE = "MENU"
+
 
 	def endloop(self):
 		self.Hero.kill()
