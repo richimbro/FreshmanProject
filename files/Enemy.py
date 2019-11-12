@@ -15,4 +15,17 @@ class Enemy:
         self.rect.x = x
         self.rect.y = y
         self.speed = 3
-        self.health = 1 
+        self.health = 1
+
+    def shoot(self):
+		hello
+
+	def jump(self):
+		while True:
+			self.rect.x += 5
+			self.rect.y -= 5
+
+	def move(self):
+		while True:
+			self.rect.x += 5
+			self.rect.x -= 5
