@@ -9,7 +9,7 @@ class Controller:
 		self.background = pygame.Surface(self.screen.get_size())
 		self.width = width
 		self.height = height
-		self.Hero = Hero("Bob", (width/3 , height/3), "assets/gameData/kirby.png")
+		self.Hero = Hero.Hero("assets/gameData/kirby.png", 100 , 100, 320, 240)
 		self.STATE = "GAME"
 
 	def mainloop(self):
@@ -22,7 +22,7 @@ class Controller:
 	def gameloop(self):
 		pygame.key.set_repeat(1,50)
 		while self.STATE == "GAME":
-			self.background.fill(149, 249, 12)
+			self.background.fill((149, 100, 12))
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					sys.exit()
@@ -34,9 +34,11 @@ class Controller:
 					elif(event.key == pygame.K_SPACE):
 						self.Hero.jump()
 				self.Hero.update()
+				self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
+			pygame.display.update()
 
 	def endloop(self):
-		self.hero.kill()
+		self.Hero.kill()
 		myfont = pygame.font.SysFont(None, 30)
 		message = myfont.render("Ayy Lmao", False, (0,0,0))
 		self.screen.blit(message, (self.width/2, self.height/2))
