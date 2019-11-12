@@ -7,5 +7,5 @@ class Spike:
         self.height = height
         self.width = width
 
-    def collision():
+    def collision(self):
         if 
