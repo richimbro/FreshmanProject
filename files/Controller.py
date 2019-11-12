@@ -9,8 +9,9 @@ class Controller:
 		self.background = pygame.Surface(self.screen.get_size())
 		self.width = width
 		self.height = height
-		self.Hero = Hero.Hero("assets/gameData/kirby.png", 3 , 3, 40, 0)
+		self.Hero = Hero.Hero("assets/gameData/kirby.png", 3 , 3, 320, 240)
 		self.STATE = "GAME"
+		pygame.transform.scale(self.Hero.image, (20,20))
 
 	def mainloop(self):
 		while True:
@@ -33,9 +34,10 @@ class Controller:
 						self.Hero.move_left()
 					elif(event.key == pygame.K_SPACE):
 						self.Hero.jump()
-				self.Hero.update()
-				self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
-				pygame.display.update()
+			self.Hero.update()
+			self.screen.blit(self.background,(0,0))
+			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
+			pygame.display.update()
 
 	def endloop(self):
 		self.Hero.kill()
