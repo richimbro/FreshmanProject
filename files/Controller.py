@@ -45,9 +45,11 @@ class Controller:
 			self.clock.tick(60)
 
 	def menuloop(self):
+		self.background.fill((149, 100, 12))
+		self.screen.blit(self.background,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
 		message = myfont.render("Use the arrow keys and space to move. Press space to start", False, (0,0,0))
-		self.screen.blit(message, (self.width/2, self.height/2))
+		self.screen.blit(message, (0, self.height/2))
 		pygame.display.update()
 		while (self.STATE == "MENU"):
 			for event in pygame.event.get():
