@@ -1,16 +1,17 @@
 import pygame
+import sys
 from files import Hero
 from files import Platform
 
 class Controller:
-
+	pygame.init()
 	def __init__(self, width = 640, height = 480):
 		self.screen = pygame.display.set_mode((width,height))
 		self.background = pygame.Surface(self.screen.get_size())
 		self.width = width
 		self.height = height
 		self.Hero = Hero.Hero("assets/gameData/kirby.png", 3 , 3, 320, 240)
-		self.STATE = "GAME"
+		self.STATE = "MENU"
 		self.clock = pygame.time.Clock()
 
 
@@ -18,6 +19,8 @@ class Controller:
 		while True:
 			if(self.STATE == "GAME"):
 				self.gameloop()
+			elif(self.STATE == "MENU"):
+				self.menuloop()
 			elif(self.STATE == "Exit"):
 				self.endloop()
 
@@ -40,6 +43,19 @@ class Controller:
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
 			pygame.display.update()
 			self.clock.tick(60)
+
+	def menuloop(self):
+		myfont = pygame.font.SysFont(None, 30)
+		message = myfont.render("Use the arrow keys and space to move. Press space to start", False, (0,0,0))
+		self.screen.blit(message, (self.width/2, self.height/2))
+		pygame.display.update()
+		while (self.STATE == "MENU"):
+			for event in pygame.event.get():
+				if event.type == pygame.QUIT:
+					sys.exit()
+				elif event.type == pygame.KEYDOWN:
+					if (event.key == pygame.K_SPACE):
+						self.STATE = "GAME"
 
 	def endloop(self):
 		self.Hero.kill()
