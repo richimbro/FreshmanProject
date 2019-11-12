@@ -11,7 +11,8 @@ class Controller:
 		self.height = height
 		self.Hero = Hero.Hero("assets/gameData/kirby.png", 3 , 3, 320, 240)
 		self.STATE = "GAME"
-		pygame.transform.scale(self.Hero.image, (20,20))
+		self.clock = pygame.time.Clock()
+
 
 	def mainloop(self):
 		while True:
@@ -38,6 +39,7 @@ class Controller:
 			self.screen.blit(self.background,(0,0))
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
 			pygame.display.update()
+			self.clock.tick(60)
 
 	def endloop(self):
 		self.Hero.kill()

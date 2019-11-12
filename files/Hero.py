@@ -27,8 +27,20 @@ class Hero(pygame.sprite.Sprite):
 
 #def shout(self, enemy):
 
+# this function was from the player class in pyscroller
+	def calc_grav(self):
+		if self.change_y == 0:
+			self.change_y = 1
+		else:
+			self.change_y += .35
+
+		# See if we are on the ground.
+		if self.rect.y >= 480 - self.rect.height and self.change_y >= 0:
+			self.change_y = 0
+			self.rect.y = 480 - self.rect.height
+
 	def update(self):
+		self.calc_grav()
 		self.rect.x += self.change_x
 		self.rect.y += self.change_y
 		self.change_x = 0
-		self.change_y = 0
