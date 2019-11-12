@@ -31,6 +31,8 @@ class Hero(pygame.sprite.Sprite):
 
 #def shout(self, enemy):
 
-	def update()
+	def update():
 		self.rect.x += self.change_x
-		
+		self.rect.y += self.change_y
+		self.change_x = 0
+		self.change_y = 0
