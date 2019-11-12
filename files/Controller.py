@@ -9,7 +9,7 @@ class Controller:
 		self.background = pygame.Surface(self.screen.get_size())
 		self.width = width
 		self.height = height
-		self.Hero = Hero.Hero("assets/gameData/kirby.png", 100 , 100, 320, 240)
+		self.Hero = Hero.Hero("assets/gameData/kirby.png", 3 , 3, 40, 0)
 		self.STATE = "GAME"
 
 	def mainloop(self):
@@ -35,7 +35,7 @@ class Controller:
 						self.Hero.jump()
 				self.Hero.update()
 				self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
-			pygame.display.update()
+				pygame.display.update()
 
 	def endloop(self):
 		self.Hero.kill()

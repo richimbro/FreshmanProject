@@ -23,8 +23,7 @@ class Hero(pygame.sprite.Sprite):
 		self.change_x = 10
 		self.direction = "R"
 	def jump(self): #going to have to fix this
-		self.rect.y += self.speed
-		self.rect.y -= self.speed
+		self.change_y = -10
 
 #def shout(self, enemy):
 
