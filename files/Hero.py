@@ -27,6 +27,15 @@ class Hero(pygame.sprite.Sprite):
 		if self.rect.bottom >= 480:
 			self.change_y = -10
 
+			''' #check out adding this code to the jump function to check if there is a platform
+			self.rect.y += 2
+        	platform_hit_list = pygame.sprite.spritecollide(self, self.level.Platform, False)
+        	self.rect.y -= 2
+
+        	# If it is ok to jump, set our speed upwards
+        	if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
+            self.change_y = -10
+			'''
 #def shout(self, enemy):
 
 # this function was from the player class in pyscroller
