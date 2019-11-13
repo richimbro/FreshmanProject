@@ -41,7 +41,13 @@ class Hero(pygame.sprite.Sprite):
 			self.change_y = 0
 			self.rect.y = 480 - self.rect.height
 
+	def getPlats(self, Platform):
+		self.Platform = Platform
+
 	def update(self):
 		self.calc_grav()
 		self.rect.x += self.change_x
 		self.rect.y += self.change_y
+		col = pygame.sprite.collide_rect(self, self.Platform)
+		if col == True :
+			self.rect.bottom = self.Platform.rect.top

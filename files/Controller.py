@@ -28,6 +28,8 @@ class Controller:
 
 	def gameloop(self):
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
+		grassTest = Platform.Platform(100,300, "assets/gameData/GrassPlatform.png")
+		self.Hero.getPlats(grassTest)
 		pygame.key.set_repeat(1,50)
 		while self.STATE == "GAME":
 			self.background.fill((45, 18, 224))
@@ -51,6 +53,7 @@ class Controller:
 			self.Hero.update()
 			self.screen.blit(background_image,(0,0))
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
+			self.screen.blit(grassTest.image,(grassTest.rect.x, grassTest.rect.y))
 			pygame.display.update()
 			self.clock.tick(60)
 
