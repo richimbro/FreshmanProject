@@ -43,6 +43,11 @@ class Controller:
 						self.Hero.jump()
 					elif(event.key == pygame.K_q):
 						self.STATE = "MENU"
+				elif event.type == pygame.KEYUP:
+					if (event.key == pygame.K_RIGHT):
+						self.Hero.change_x = 0
+					elif (event.key == pygame.K_LEFT):
+						self.Hero.change_x = 0
 			self.Hero.update()
 			self.screen.blit(background_image,(0,0))
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))

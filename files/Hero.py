@@ -15,6 +15,7 @@ class Hero(pygame.sprite.Sprite):
 		self.change_x = 0
 		self.change_y = 0
 		self.direction = ""
+		self.checkJump = False
 
 	def move_left(self):
 		self.change_x = -10
@@ -23,7 +24,8 @@ class Hero(pygame.sprite.Sprite):
 		self.change_x = 10
 		self.direction = "R"
 	def jump(self): #going to have to fix this
-		self.change_y = -10
+		if self.rect.bottom >= 480:
+			self.change_y = -10
 
 #def shout(self, enemy):
 
@@ -43,4 +45,3 @@ class Hero(pygame.sprite.Sprite):
 		self.calc_grav()
 		self.rect.x += self.change_x
 		self.rect.y += self.change_y
-		self.change_x = 0
