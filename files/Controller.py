@@ -27,6 +27,7 @@ class Controller:
 				self.controlsloop()
 
 	def gameloop(self):
+		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
 		pygame.key.set_repeat(1,50)
 		while self.STATE == "GAME":
 			self.background.fill((45, 18, 224))
@@ -40,8 +41,10 @@ class Controller:
 						self.Hero.move_left()
 					elif(event.key == pygame.K_SPACE):
 						self.Hero.jump()
+					elif(event.key == pygame.K_q):
+						self.STATE = "MENU"
 			self.Hero.update()
-			self.screen.blit(self.background,(0,0))
+			self.screen.blit(background_image,(0,0))
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
 			pygame.display.update()
 			self.clock.tick(60)
