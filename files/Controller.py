@@ -29,13 +29,13 @@ class Controller:
 	def gameloop(self):
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
 		grassTest = Platform.Platform(50,100, "assets/gameData/GrassPlatform.png", 100, 100)
-		self.Hero.getPlats(grassTest)
 		pygame.key.set_repeat(1,50)
 		while self.STATE == "GAME":
 			self.background.fill((45, 18, 224))
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					sys.exit()
+##################### Player Controls Below #####################
 				elif event.type == pygame.KEYDOWN:
 					if (event.key == pygame.K_RIGHT):
 						self.Hero.move_right()
@@ -50,12 +50,15 @@ class Controller:
 						self.Hero.change_x = 0
 					elif (event.key == pygame.K_LEFT):
 						self.Hero.change_x = 0
+##################### Player Controls Above #####################
+#####################     Updating Below    #####################
 			self.Hero.update()
 			self.screen.blit(background_image,(0,0))
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
 			self.screen.blit(grassTest.image,(grassTest.rect.x, grassTest.rect.y))
 			pygame.display.update()
 			self.clock.tick(60)
+#####################     Updating Above    #####################
 
 	def menuloop(self):
 		self.background.fill((224, 28, 18))

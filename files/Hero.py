@@ -2,7 +2,6 @@ import pygame
 import random
 
 class Hero(pygame.sprite.Sprite):
-
 	def __init__(self, image, height, width, x, y):
 		pygame.sprite.Sprite.__init__(self)
 		self.image = pygame.image.load(image)
@@ -15,7 +14,7 @@ class Hero(pygame.sprite.Sprite):
 		self.change_x = 0
 		self.change_y = 0
 		self.direction = ""
-		self.checkJump = False
+		self.levelDetails = None
 
 	def move_left(self):
 		self.change_x = -10
@@ -50,13 +49,7 @@ class Hero(pygame.sprite.Sprite):
 			self.change_y = 0
 			self.rect.y = 480 - self.rect.height
 
-	def getPlats(self, Platform):
-		self.Platform = Platform
-
 	def update(self):
 		self.calc_grav()
 		self.rect.x += self.change_x
 		self.rect.y += self.change_y
-		col = pygame.sprite.collide_rect(self, self.Platform)
-		if col == True :
-			self.rect.bottom = self.Platform.rect.top
