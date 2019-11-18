@@ -28,7 +28,7 @@ class Controller:
 
 	def gameloop(self):
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
-		grassTest = Platform.Platform(50,100, "assets/gameData/GrassPlatform.png", 100, 100)
+		grassTest = Platform.Platform(100,150, "assets/gameData/GrassPlatform.png", 50, 50)
 		pygame.key.set_repeat(1,50)
 		while self.STATE == "GAME":
 			self.background.fill((45, 18, 224))

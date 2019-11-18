@@ -19,4 +19,4 @@ class Platform(pygame.sprite.Sprite):
 		self.height = height
 
 		#make every title the same with width and height and just plug a
-		#platform in at  the desiredx and y
+		#platform in at  the desired x and y
