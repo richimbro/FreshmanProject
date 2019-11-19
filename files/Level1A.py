@@ -2,7 +2,7 @@ class Level1A(Level):
 
 		def __init__(self, player):
 	 		""" Create level 1. """
-
+			self.player = player
 			# Call the parent constructor
 			Level.__init__(self, player)
 			# Array with width, height, x, and y of platform
@@ -10,6 +10,11 @@ class Level1A(Level):
 					[210, 70, 200, 400],
 					[210, 70, 600, 300],
 					]
+			platform = []
+			enemies = []
+			startstop = [(0,0),(50,100)]
+			Level = [platform,enemies,startstop]
+
 
 			# Go through the array above and add platforms
 			for platform in level:

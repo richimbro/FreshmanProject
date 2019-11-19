@@ -34,7 +34,7 @@ class Hero(pygame.sprite.Sprite):
 
         	# If it is ok to jump, set our speed upwards
         	if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
-            self.change_y = -10
+            	self.change_y = -10
 			'''
 #def shout(self, enemy):
 
@@ -51,7 +51,7 @@ class Hero(pygame.sprite.Sprite):
 			self.rect.y = 480 - self.rect.height
 
 	def update(self):
-		#updated a lot in this function, we have to work on the self.levels.platform
+		#updated a lot in this function, we have to work on the self.Platform.platform_list
 		#and make it work again, we can work on that tomorrow
 		self.calc_grav()
 		self.rect.x += self.change_x
