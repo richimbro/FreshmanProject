@@ -1,10 +1,10 @@
-import Level
+from files import Level
 
 
 
 class Level1A(Level):
 	def __init__(self, player):
- 		""" Create level 1. """
+		""" Create level 1. """
 
 		# Call the parent constructor
 		Level.__init__(self, player)
@@ -13,18 +13,18 @@ class Level1A(Level):
 		self.player = player
 
 		# Array with width, height, x, and y of platform
-		level = [[210, 70, 500, 500],
+		Level = [[210, 70, 500, 500],
 				[210, 70, 200, 400],
 				[210, 70, 600, 300],
 				]
-		platform = []
-		enemies = []
-		startstop = [(0,0),(50,100)]
-		Level = [platform,enemies,startstop]
+		#platform = []
+		#enemies = []
+		#startstop = [(0,0),(50,100)]
+		#Level = [platform,enemies,startstop]
 
 
 		# Go through the array above and add platforms
-		for platform in level:
+		for platform in Level:
 			block = Platform(platform[0], platform[1])
 			block.rect.x = platform[2]
 			block.rect.y = platform[3]
