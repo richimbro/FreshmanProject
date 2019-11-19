@@ -1,6 +1,6 @@
 import pygame
 import random
-from files import Levels
+from files import Platform
 
 class Hero(pygame.sprite.Sprite):
 	def __init__(self, image, height, width, x, y):
@@ -51,12 +51,12 @@ class Hero(pygame.sprite.Sprite):
 			self.rect.y = 480 - self.rect.height
 
 	def update(self):
-		#updated a lot in h=this function, we have to work on the self.levels.platform
+		#updated a lot in this function, we have to work on the self.levels.platform
 		#and make it work again, we can work on that tomorrow
 		self.calc_grav()
 		self.rect.x += self.change_x
 		# See if we hit anything
-		block_hit_list = pygame.sprite.spritecollide(self, self.Levels.platform_list, False)
+		block_hit_list = pygame.sprite.spritecollide(self, self.Platform.platform_list, False)
 		for block in block_hit_list:
 		# set our right side to the left side of the item we hit
 			if self.change_x > 0:
@@ -67,9 +67,8 @@ class Hero(pygame.sprite.Sprite):
 		self.rect.y += self.change_y
 
 		# Check and see if we hit anything
-		block_hit_list = pygame.sprite.spritecollide(self, self.Levels.platform_list, False)
+		block_hit_list = pygame.sprite.spritecollide(self, self.Platform.platform_list, False)
 		for block in block_hit_list:
-
 		# Reset our position based on the top/bottom of the object.
 			if self.change_y > 0:
 				self.rect.bottom = block.rect.top
