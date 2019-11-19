@@ -51,6 +51,8 @@ class Hero(pygame.sprite.Sprite):
 			self.rect.y = 480 - self.rect.height
 
 	def update(self):
+		#updated a lot in h=this function, we have to work on the self.levels.platform
+		#and make it work again, we can work on that tomorrow
 		self.calc_grav()
 		self.rect.x += self.change_x
 		# See if we hit anything
