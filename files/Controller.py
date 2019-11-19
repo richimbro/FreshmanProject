@@ -5,7 +5,7 @@ from files import Platform
 
 class Controller:
 	pygame.init()
-	def __init__(self, width = 640, height = 480):
+	def __init__(self, width = 1000, height = 750):
 		self.screen = pygame.display.set_mode((width,height))
 		self.background = pygame.Surface(self.screen.get_size())
 		self.width = width

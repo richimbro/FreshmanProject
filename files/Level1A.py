@@ -2,9 +2,13 @@ class Level1A(Level):
 
 		def __init__(self, player):
 	 		""" Create level 1. """
-			self.player = player
+
 			# Call the parent constructor
 			Level.__init__(self, player)
+			self.background = pygame.image.load("background_01.png").convert()
+			self.background.set_colorkey(constants.WHITE)
+			self.player = player
+
 			# Array with width, height, x, and y of platform
 			level = [[210, 70, 500, 500],
 					[210, 70, 200, 400],

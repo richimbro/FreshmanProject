@@ -15,7 +15,7 @@ class Hero(pygame.sprite.Sprite):
 		self.change_x = 0
 		self.change_y = 0
 		self.direction = ""
-		self.levelDetails = None
+		Level = None
 
 	def move_left(self):
 		self.change_x = -10
@@ -24,7 +24,7 @@ class Hero(pygame.sprite.Sprite):
 		self.change_x = 10
 		self.direction = "R"
 	def jump(self): #going to have to fix this
-		if self.rect.bottom >= 480:
+		if self.rect.bottom >= 750:
 			self.change_y = -10
 
 			''' #check out adding this code to the jump function to check if there is a platform
@@ -46,9 +46,9 @@ class Hero(pygame.sprite.Sprite):
 			self.change_y += .35
 
 		# See if we are on the ground.
-		if self.rect.y >= 480 - self.rect.height and self.change_y >= 0:
+		if self.rect.y >= 750 - self.rect.height and self.change_y >= 0:
 			self.change_y = 0
-			self.rect.y = 480 - self.rect.height
+			self.rect.y = 750 - self.rect.height
 
 	def update(self):
 		#updated a lot in this function, we have to work on the self.Platform.platform_list
