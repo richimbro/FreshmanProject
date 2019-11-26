@@ -72,6 +72,8 @@
 
 | Step                  | Procedure     | Expected Results  | Actual Results |
 | ----------------------|:-------------:| -----------------:| -------------- |
-|  1  | Run Counter Program  | GUI window appears with count = 0  |          |
-|  2  | click count button  | display changes to count = 1 |                 |
+|  1  |
+Open terminal, navigate to folder, and type, “python3 main.py”
+  | Pygame window will open with main menu screen  |          |
+|  2  | click the C button  | screen will change to the control screen |                 |
 etc...

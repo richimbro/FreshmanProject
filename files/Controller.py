@@ -3,6 +3,8 @@ import sys
 from files import Hero
 from files import Platform
 from files import Level1A
+from files import Level
+
 
 class Controller:
 	pygame.init()
@@ -30,7 +32,7 @@ class Controller:
 	def gameloop(self):
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
 		grassTest = Platform.Platform(100,150, "assets/gameData/GrassPlatform.png", 50, 50)
-		Hero.level = Level(Level1A(Hero))
+		Hero.Level = Level.Level1A(Hero)
 
 
 		pygame.key.set_repeat(1,50)
