@@ -72,8 +72,9 @@
 
 | Step                  | Procedure     | Expected Results  | Actual Results |
 | ----------------------|:-------------:| -----------------:| -------------- |
-|  1  |
-Open terminal, navigate to folder, and type, “python3 main.py”
-  | Pygame window will open with main menu screen  |          |
-|  2  | click the C button  | screen will change to the control screen |                 |
+|  1  | Open terminal, navigate to folder, and type, “python3 main.py” | Pygame window will open on the main menu screen  |          |
+|  2  | click "c" on the keyboard  | window changes from the main menu screen to the control screen |                 |
+|  3  | click "m" on the keyboard | window changes back to the main menu screen |                 |
+|  4  | click the space bar on the keyboard | window changes to the game screen and the game starts |                 |
+|  3  | click "m" on the keyboard | window changes back to the main menu screen |                 |
 etc...
