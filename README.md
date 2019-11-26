@@ -78,7 +78,12 @@
 |  4  | click the space bar on the keyboard | window changes to the game screen and the game starts |                 |
 |  5  | Use the arrow keys to move and space bar to jump | The character on screen will be able to move and jump |                 |
 |  6  | Jump on top of a platform using the spacebar and arrow keys  | Character jumps onto the platform and collides with the platform causing him to stand on it |                 |
-|  7  | click the space bar on the keyboard | window changes to the game screen and the game starts |                 |
+|  7  | using the arrow keys and spacebar, navigate to the end game door and touch the character to it | window changes to  the next tile of the level where your character will spawn into |                 |
+|  8  | Use the arrow keys to advance further and get to the final level | window changes to the end game screen and the player has won |                 |
+|  9  | click the space bar on the keyboard | window changes to the game screen and the game ends |                 |
+| 10  | Close the game, open terminal, navigate to folder, and type, “python3 main.py” | Pygame window will close then open on the main menu screen  |          |
+| 11  | click the space bar on the keyboard | window changes to the game screen and the game starts again |                 |
+| 12  | Use the arrow keys and space bar to navigate through different parts of the level by touching the character to the end doors in each tile | As the player progresses the tiles of the level should be different |                 |
 
 
 etc...
