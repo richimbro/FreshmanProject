@@ -74,7 +74,11 @@
 | ----------------------|:-------------:| -----------------:| -------------- |
 |  1  | Open terminal, navigate to folder, and type, “python3 main.py” | Pygame window will open on the main menu screen  |          |
 |  2  | click "c" on the keyboard  | window changes from the main menu screen to the control screen |                 |
-|  3  | click "m" on the keyboard | window changes back to the main menu screen |                 |
+|  3  | click "q" on the keyboard | window changes back to the main menu screen |                 |
 |  4  | click the space bar on the keyboard | window changes to the game screen and the game starts |                 |
-|  3  | click "m" on the keyboard | window changes back to the main menu screen |                 |
+|  5  | Use the arrow keys to move and space bar to jump | The character on screen will be able to move and jump |                 |
+|  6  | Jump on top of a platform using the spacebar and arrow keys  | Character jumps onto the platform and collides with the platform causing him to stand on it |                 |
+|  7  | click the space bar on the keyboard | window changes to the game screen and the game starts |                 |
+
+
 etc...
