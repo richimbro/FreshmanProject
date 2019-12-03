@@ -31,8 +31,9 @@ class Controller:
 
 	def gameloop(self):
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
-		grassTest = Platform.Platform(100,150, "assets/gameData/GrassPlatform.png", 50, 50)
-		Hero.Level = Level.Level1A(Hero)
+		onScreenSprites = pygame.sprite.Group()
+		onScreenSprites.add(Hero)
+		Hero.Level = Level1A(Hero)
 
 
 		pygame.key.set_repeat(1,50)

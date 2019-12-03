@@ -1,7 +1,5 @@
 from files.Level import Level
 
-
-
 class Level1A(Level):
 	def __init__(self, player):
 		""" Create level 1. """
