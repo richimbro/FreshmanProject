@@ -3,6 +3,7 @@ import sys
 from files import Hero
 from files import Platform
 from files import Levels
+from files import Level1B
 
 
 class Controller:
