@@ -45,6 +45,7 @@ class Level():
 		blue = pygame.image.load("assets/gameData/Blue.jpg")
 		door = pygame.image.load("assets/gamedata/doorimage.png")
 		self.currentPlatforms = []
+		self.endgame = []
 		y = 0
 		for row in map:
 			x = 0
