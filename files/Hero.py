@@ -15,7 +15,14 @@ class Hero(pygame.sprite.Sprite):
 		self.change_x = 0
 		self.change_y = 0
 		self.direction = ""
-		Level = None
+		self.hitList = []
+
+
+	def checkCollide(self, platforms):
+		self.hitList = []
+		for tile in platforms:
+			if self.rect.colliderect(tile):
+					self.hitList.append(tile)
 
 	def move_left(self):
 		self.change_x = -10
@@ -24,18 +31,16 @@ class Hero(pygame.sprite.Sprite):
 		self.change_x = 10
 		self.direction = "R"
 	def jump(self): #going to have to fix this
-		if self.rect.bottom >= 750:
-			self.change_y = -10
+		if self.rect.bottom <= 800:
+			self.change_y = -40
 
-			''' #check out adding this code to the jump function to check if there is a platform
-			self.rect.y += 2
-        	platform_hit_list = pygame.sprite.spritecollide(self, self.level.Platform, False)
-        	self.rect.y -= 2
+			#check out adding this code to the jump function to check if there is a platform
+			#self.rect.y += 2
+			#self.rect.y -= 2
 
-        	# If it is ok to jump, set our speed upwards
-        	if len(platform_hit_list) > 0 or self.rect.bottom >= SCREEN_HEIGHT:
-            	self.change_y = -10
-			'''
+			# If it is ok to jump, set our speed upwards
+			#if len(self.hitList) > 0 or self.rect.bottom >= 800:
+			#	self.change_y = -10
 #def shout(self, enemy):
 
 # this function was from the player class in pyscroller
@@ -46,33 +51,34 @@ class Hero(pygame.sprite.Sprite):
 			self.change_y += .35
 
 		# See if we are on the ground.
-		if self.rect.y >= 750 - self.rect.height and self.change_y >= 0:
+		if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
 			self.change_y = 0
-			self.rect.y = 750 - self.rect.height
+			self.rect.y = 800 - self.rect.height
 
-	def update(self):
+	def update(self, platforms):
 		#updated a lot in this function, we have to work on the self.Platform.platform_list
 		#and make it work again, we can work on that tomorrow
+
 		self.calc_grav()
 		self.rect.x += self.change_x
 		# See if we hit anything
-		block_hit_list = pygame.sprite.spritecollide(self, self.Platform.platform_list, False)
-		for block in block_hit_list:
+		self.checkCollide(platforms)
+		for block in self.hitList:
 		# set our right side to the left side of the item we hit
 			if self.change_x > 0:
-				self.rect.right = block.rect.left
+				self.rect.right = block.left
 			elif self.change_x < 0:
-		 	# Otherwise if we are moving left, do the opposite.
-		 		self.rect.left = block.rect.right
-		self.rect.y += self.change_y
+			# Otherwise if we are moving left, do the opposite.
+				self.rect.left = block.right
 
+		self.rect.y += self.change_y
 		# Check and see if we hit anything
-		block_hit_list = pygame.sprite.spritecollide(self, self.Platform.platform_list, False)
-		for block in block_hit_list:
+		self.checkCollide(platforms)
+		for block in self.hitList:
 		# Reset our position based on the top/bottom of the object.
 			if self.change_y > 0:
-				self.rect.bottom = block.rect.top
+				self.rect.bottom = block.top
 			elif self.change_y < 0:
-				self.rect.top = block.rect.bottom
+				self.rect.top = block.bottom
 		# Stop our vertical movement
 		self.change_y = 0

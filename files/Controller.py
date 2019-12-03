@@ -2,20 +2,20 @@ import pygame
 import sys
 from files import Hero
 from files import Platform
-from files import Level1A
-from files import Level
+from files import Levels
 
 
 class Controller:
 	pygame.init()
-	def __init__(self, width = 1000, height = 750):
+	def __init__(self, width = 1200, height = 800):
 		self.screen = pygame.display.set_mode((width,height))
 		self.background = pygame.Surface(self.screen.get_size())
 		self.width = width
 		self.height = height
-		self.Hero = Hero.Hero("assets/gameData/kirby.png", 3 , 3, 320, 240)
+		self.Hero = Hero.Hero("assets/gameData/shittyPlayer.jpg", 32 , 32, 200, 200)
 		self.STATE = "MENU"
 		self.clock = pygame.time.Clock()
+		self.myLevel = Levels.Level()
 
 
 	def mainloop(self):
@@ -31,14 +31,11 @@ class Controller:
 
 	def gameloop(self):
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
-		onScreenSprites = pygame.sprite.Group()
-		onScreenSprites.add(Hero)
-		Hero.Level = Level1A(Hero)
-
+		self.myLevel.genMap(self.myLevel.testMap,self.screen)
 
 		pygame.key.set_repeat(1,50)
 		while self.STATE == "GAME":
-			self.background.fill((45, 18, 224))
+			#self.background.fill((45, 18, 224))
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
 					sys.exit()
@@ -59,11 +56,11 @@ class Controller:
 						self.Hero.change_x = 0
 ##################### Player Controls Above #####################
 #####################     Updating Below    #####################
-			self.Hero.update()
-			self.screen.blit(background_image,(0,0))
+			self.background.fill((224, 28, 18))
+			self.Hero.update(self.myLevel.currentPlatforms)
+			self.myLevel.genMap(self.myLevel.testMap,self.screen)
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
-			self.screen.blit(grassTest.image,(grassTest.rect.x, grassTest.rect.y))
-			pygame.display.update()
+			pygame.display.flip()
 			self.clock.tick(60)
 #####################     Updating Above    #####################
 
