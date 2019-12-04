@@ -71,8 +71,7 @@ class Controller:
 						self.Hero.change_x = 0
 ##################### Player Controls Above #####################
 #####################     Updating Below    #####################
-			self.background.fill((224, 28, 18))
-			self.screen.blit(self.background,(0,0))
+			self.screen.blit(background_image,(0,0))
 			self.Hero.update(self.myLevel.currentPlatforms,self.myLevel.currentDoor, self.myLevel.lava)
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
 			self.myLevel.genMap(self.LevelList[0],self.screen)

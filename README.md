@@ -5,9 +5,9 @@
 ### << 1st Semester, 1st Year >>
 ### [Assignment Description](https://drive.google.com/open?id=1HLIk-539N9KiAAG1224NWpFyEl4RsPVBwtBZ9KbjicE)
 
-<< [https://github.com/<repo>](#) >>
+ [https://github.com/bucs110/final-project-fall19-feel-free-to-contribute](#)
 
-<< [link to demo presentation slides](#) >>
+ [https://docs.google.com/presentation/d/1dEIzJyUwzSUrwm9RalxdfODcf1GLsRS0VP4OoX60bU0/edit#slide=id.g33aee8826e_9_16](#)
 
 ### Team: << Feel Free to Contribute>>
 #### << Anthony Goncalves, Richard Imbro and James Klingaman >>
@@ -21,8 +21,7 @@
 
 ## User Interface Design
 * ![class diagram](assets/readMeData/gui_sketch.png)
-    * For example, if your program has a start screen, game screen, and game over screen, you should include a wireframe / screenshot / drawing of each one and a short description of the components
-* << You should also have a screenshot of each screen for your final GUI >>
+
 * << Top Left: Start screen explaining the controls and getting ready to start the level>>
 * << Bottom Left: Game screen featuring the player, level and platforms as well as gears used as lives within the level >>
 * << Top Right: Win screen if the player has successfully completed the levels >>
@@ -31,22 +30,15 @@
 
 ## Program Design
 * Non-Standard libraries
-    * << You should have a list of any additional libraries or modules used (pygame, request) beyond non-standard python. >>
-    * For each additional module you should include
-        * url for the module documentation
-        * a short description of the module
-* Class Interface Design
+		None
+		* Class Interface Design
     * << A simple drawing that shows the class relationships in your code (see below for an example). >>
         * ![class diagram](assets/readMeData/flow_chart.png)
     * This does not need to be overly detailed, but should show how your code fits into the Model/View/Controller paradigm.
 * Classes
-    * Hero Class: Will be used as the main playable character that will be to run, jump and shout to finish the level
-    * Platform Class: Will be used as what the player will stand on to progress through each level
-    * Spike Class: Will be used as an obstruction that will result in the player's death
-    * Enemy Class: Will be used to block the enemy from finishing the level through causing the player to die on contact
-    * Ground Class: Used as the ground of the level the player will walk on however can also be used as an obstacle such as lava floor depending on slight modification
-    * Level Class: Code for each individual sub level within the code
-
+    * Hero Class: Will be used as the main playable character that will be to run and jump to finish the level
+    * Levels: Generates new levels
+    * Controller: Checks for the various screens of the game and is used for the purpose of controlling the character throughout the levels.
 ***
 
 ## Tasks and Responsibilities
@@ -54,19 +46,17 @@
 
 ### Software Lead - << Anthony Goncalves >>
 
-<< Worked as integration specialist by... >>
+<< Writing the ATP and writing large portions of the classes>>
 
 ### Front End Specialist - << James Klingaman >>
 
-<< Front-end lead conducted significant research on... >>
+<< Modeled the GUI and various other interface >>
 
 ### Back End Specialist - << Richard Imbro >>
 
-<< The back end specialist... >>
+<< Worked on the development of various classes and levels inside of the game>>
 
 ## Testing
-* << Describe your testing strategy for your project. >>
-    * << Example >>
 
 * Your ATP
 
