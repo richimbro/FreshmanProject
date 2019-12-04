@@ -16,7 +16,7 @@ class Controller:
 		self.STATE = "MENU"
 		self.clock = pygame.time.Clock()
 		self.myLevel = Levels.Level()
-		self.levelCount = 1
+		self.counter = 0
 		Level1 = self.myLevel.LevelList[0]
 		Level2 = self.myLevel.LevelList[random.randrange(4,7)]
 		self.LevelList = [Level1,Level2]
@@ -25,25 +25,29 @@ class Controller:
 
 	def mainloop(self):
 		while True:
-			if(self.STATE == "1"):
-				self.gameloop(0)
-			elif(self.STATE == "2"):
-				self.gameloop(1)
-			elif(self.STATE == "MENU"):
+			if(self.STATE == "GAME1"):
+				self.gameloop1()
+			if(self.STATE == "DEATH"):
+				self.deathloop()
+			if(self.STATE == "MENU"):
 				self.menuloop()
-			elif(self.STATE == "Exit"):
+			if(self.STATE == "WIN"):
+				self.winloop()
+			if(self.STATE == "LOAD"):
+				self.loadloop()
+			if(self.STATE == "Exit"):
 				self.endloop()
-			elif(self.STATE == "CONTROL"):
+			if(self.STATE == "CONTROL"):
 				self.controlsloop()
 
-	def gameloop(self, num):
+	def gameloop1(self):
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
-		self.myLevel.genMap(self.LevelList[num],self.screen)
-		self.Hero = Hero.Hero("assets/gameData/shittyPlayer.jpg", 32 , 32, 60, 352)
+		self.myLevel.genMap(self.LevelList[0],self.screen)
+		self.Hero = Hero.Hero("assets/gameData/player.png", 32 , 32, 60, 352)
 
 
 		pygame.key.set_repeat(1,50)
-		while self.STATE == str(self.levelCount):
+		while self.STATE == "GAME1":
 			#self.background.fill((45, 18, 224))
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
@@ -55,7 +59,7 @@ class Controller:
 					elif (event.key == pygame.K_LEFT):
 						self.Hero.move_left()
 					elif(event.key == pygame.K_SPACE):
-						self.Hero.jump(self.myLevel.currentPlatforms, self.myLevel.currentDoor)
+						self.Hero.jump(self.myLevel.currentPlatforms, self.myLevel.currentDoor, self.myLevel.lava)
 					elif(event.key == pygame.K_q):
 						self.STATE = "MENU"
 				elif event.type == pygame.KEYUP:
@@ -67,17 +71,24 @@ class Controller:
 #####################     Updating Below    #####################
 			self.background.fill((224, 28, 18))
 			self.screen.blit(self.background,(0,0))
-			self.Hero.update(self.myLevel.currentPlatforms,self.myLevel.currentDoor)
-			if self.Hero.isTouchingdoor == True:
-				self.Hero.isTouchingdoor = False
-				self.levelCount += 1
-				self.STATE = str(self.levelCount)
+			self.Hero.update(self.myLevel.currentPlatforms,self.myLevel.currentDoor, self.myLevel.lava)
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
-			self.myLevel.genMap(self.LevelList[num],self.screen)
+			self.myLevel.genMap(self.LevelList[0],self.screen)
 
 			pygame.display.flip()
 			self.clock.tick(60)
+			if self.Hero.isTouchingdoor == True:
+				if self.counter == 0:
+					self.counter +=1
+					self.Hero.isTouchingdoor = False
+					self.STATE = "LOAD"
+				elif self.counter == 1:
+					self.STATE = "WIN"
+			if self.Hero.dead == True:
+				self.counter = 0
+				self.STATE = "DEATH"
 #####################     Updating Above    #####################
+
 
 	def menuloop(self):
 		self.background.fill((224, 28, 18))
@@ -92,9 +103,54 @@ class Controller:
 					sys.exit()
 				elif event.type == pygame.KEYDOWN:
 					if (event.key == pygame.K_SPACE):
-						self.STATE = "1"
+						self.STATE = "GAME1"
 					if (event.key == pygame.K_c):
 						self.STATE = "CONTROL"
+
+	def deathloop(self):
+		self.background.fill((224, 28, 18))
+		self.screen.blit(self.background,(0,0))
+		myfont = pygame.font.SysFont(None, 30)
+		message = myfont.render("You died, press space to continue", False, (0,0,0))
+		self.screen.blit(message, (0, self.height/2))
+		pygame.display.update()
+		while (self.STATE == "DEATH"):
+			for event in pygame.event.get():
+				if event.type == pygame.QUIT:
+					sys.exit()
+				elif event.type == pygame.KEYDOWN:
+					if (event.key == pygame.K_SPACE):
+						self.STATE = "GAME1"
+					if (event.key == pygame.K_c):
+						self.STATE = "CONTROL"
+
+	def winloop(self):
+		self.background.fill((224, 28, 18))
+		self.screen.blit(self.background,(0,0))
+		myfont = pygame.font.SysFont(None, 30)
+		message = myfont.render("Congratulations, you won!", False, (0,0,0))
+		self.screen.blit(message, (0, self.height/2))
+		pygame.display.update()
+		while (self.STATE == "WIN"):
+			for event in pygame.event.get():
+				if event.type == pygame.QUIT:
+					sys.exit()
+
+	def loadloop(self):
+		self.background.fill((224, 28, 18))
+		self.screen.blit(self.background,(0,0))
+		myfont = pygame.font.SysFont(None, 30)
+		message = myfont.render("Press space to continue", False, (0,0,0))
+		self.screen.blit(message, (0, self.height/2))
+		pygame.display.update()
+		while (self.STATE == "LOAD"):
+			for event in pygame.event.get():
+				if event.type == pygame.QUIT:
+					sys.exit()
+				elif event.type == pygame.KEYDOWN:
+					if (event.key == pygame.K_SPACE):
+						self.STATE = "GAME1"
+
 
 	def controlsloop(self):
 		self.background.fill((69, 245, 66))

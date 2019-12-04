@@ -17,16 +17,19 @@ class Hero(pygame.sprite.Sprite):
 		self.direction = ""
 		self.hitList = []
 		self.isTouchingdoor = False
-		self.enemyList = []
+		self.dead = False
 
 
-	def checkCollide(self, platforms, door):
+	def checkCollide(self, platforms, door,lava):
 		self.hitList = []
 		for tile in platforms:
 			if self.rect.colliderect(tile):
 					self.hitList.append(tile)
 		if self.rect.colliderect(door):
 			self.isTouchingdoor = True
+		for tile in lava:
+			if self.rect.colliderect(tile):
+					self.dead = True
 
 
 
@@ -36,38 +39,38 @@ class Hero(pygame.sprite.Sprite):
 	def move_right(self):
 		self.change_x = 10
 		self.direction = "R"
-	def jump(self,platforms, door): #going to have to fix this
+	def jump(self,platforms, door, lava): #going to have to fix this
 
 		self.rect.y += 2
-		self.checkCollide(platforms, door)
+		self.checkCollide(platforms, door, lava)
 		self.rect.y -= 2
 
 		# If it is ok to jump, set our speed upwards
 		if len(self.hitList) > 0 or self.rect.bottom >= 800:
-			self.change_y = -30
+			self.change_y = -20
 
 #def shout(self, enemy):
 
 # this function was from the player class in pyscroller
 	def calc_grav(self):
 		if self.change_y == 0:
-			self.change_y = 5
+			self.change_y = 3
 		else:
-			self.change_y += 2
+			self.change_y += 1.25
 
 		# See if we are on the ground.
 		if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
 			self.change_y = 0
 			self.rect.y = 800 - self.rect.height
 
-	def update(self, platforms,door):
+	def update(self, platforms,door,lava):
 		#updated a lot in this function, we have to work on the self.Platform.platform_list
 		#and make it work again, we can work on that tomorrow
 
 		self.calc_grav()
 		self.rect.x += self.change_x
 		# See if we hit anything
-		self.checkCollide(platforms,door)
+		self.checkCollide(platforms,door,lava)
 		for block in self.hitList:
 		# set our right side to the left side of the item we hit
 			if self.change_x > 0:
@@ -78,7 +81,7 @@ class Hero(pygame.sprite.Sprite):
 
 		self.rect.y += self.change_y
 		# Check and see if we hit anything
-		self.checkCollide(platforms, door)
+		self.checkCollide(platforms, door,lava)
 		for block in self.hitList:
 		# Reset our position based on the top/bottom of the object.
 			if self.change_y > 0:

@@ -221,13 +221,14 @@ class Level():
 # Update everythign on this level
 
 	def genMap(self,map,display):
-		green = pygame.image.load("assets/gameData/Green.jpg")
-		blue = pygame.image.load("assets/gameData/Blue.jpg")
+		green = pygame.image.load("assets/gameData/metal.png")
+		blue = pygame.image.load("assets/gameData/lava.png")
 		door = pygame.image.load("assets/gamedata/doorimage.png")
 		self.currentPlatforms = []
 		self.currentEnemies = []
 		self.currentDoor = None
 		self.endgame = []
+		self.lava = []
 		y = 0
 		for row in map:
 			x = 0
@@ -235,13 +236,13 @@ class Level():
 				if platform == '1':
 					display.blit(green,(x*32,y*32))
 				if platform == '2':
-					display.blit(blue,(x*32,y*32))
+					display.blit(green,(x*32,y*32))
 				if platform == '3':
 					display.blit(door,(x*32,y*32))
 					self.currentDoor = ((pygame.Rect(x*32,y*32,32,32)))
 				if platform == '4':
 					display.blit(blue,(x*32,y*32))
-					self.currentEnemies.append((pygame.Rect(x*32,y*32,32,32)))
+					self.lava.append((pygame.Rect(x*32,y*32,32,32)))
 				if platform == '1' or platform == '2':
 					self.currentPlatforms.append(pygame.Rect(x*32,y*32,32,32))
 				x += 1
