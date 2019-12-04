@@ -3,7 +3,6 @@ import sys
 from files import Hero
 from files import Platform
 from files import Levels
-from files import Level1B
 
 
 class Controller:
@@ -13,7 +12,6 @@ class Controller:
 		self.background = pygame.Surface(self.screen.get_size())
 		self.width = width
 		self.height = height
-		self.Hero = Hero.Hero("assets/gameData/shittyPlayer.jpg", 32 , 32, 200, 200)
 		self.STATE = "MENU"
 		self.clock = pygame.time.Clock()
 		self.myLevel = Levels.Level()
@@ -33,6 +31,8 @@ class Controller:
 	def gameloop(self):
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
 		self.myLevel.genMap(self.myLevel.testMap,self.screen)
+		self.Hero = Hero.Hero("assets/gameData/shittyPlayer.jpg", 32 , 32, 60, 352)
+
 
 		pygame.key.set_repeat(1,50)
 		while self.STATE == "GAME":
@@ -47,7 +47,7 @@ class Controller:
 					elif (event.key == pygame.K_LEFT):
 						self.Hero.move_left()
 					elif(event.key == pygame.K_SPACE):
-						self.Hero.jump()
+						self.Hero.jump(self.myLevel.currentPlatforms)
 					elif(event.key == pygame.K_q):
 						self.STATE = "MENU"
 				elif event.type == pygame.KEYUP:
@@ -58,15 +58,11 @@ class Controller:
 ##################### Player Controls Above #####################
 #####################     Updating Below    #####################
 			self.background.fill((224, 28, 18))
+			self.screen.blit(self.background,(0,0))
 			self.Hero.update(self.myLevel.currentPlatforms)
-			self.myLevel.genMap(self.myLevel.testMap,self.screen)
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
-			'''
-player_list = pygame.sprite.Group() #These etwo lines of code  need to go into global space i think? not positive
-player_list.add(player)
-			player_list.draw(world) #This is what we need, I just do not know how to make it wor
-
-			 '''
+			self.myLevel.genMap(self.myLevel.testMap,self.screen)
+			
 			pygame.display.flip()
 			self.clock.tick(60)
 #####################     Updating Above    #####################

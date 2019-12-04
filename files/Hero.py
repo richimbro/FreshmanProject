@@ -30,25 +30,24 @@ class Hero(pygame.sprite.Sprite):
 	def move_right(self):
 		self.change_x = 10
 		self.direction = "R"
-	def jump(self): #going to have to fix this
-		if self.rect.bottom <= 800:
-			self.change_y = -40
+	def jump(self,platforms): #going to have to fix this
 
-			#check out adding this code to the jump function to check if there is a platform
-			#self.rect.y += 2
-			#self.rect.y -= 2
+		self.rect.y += 2
+		self.checkCollide(platforms)
+		self.rect.y -= 2
 
-			# If it is ok to jump, set our speed upwards
-			#if len(self.hitList) > 0 or self.rect.bottom >= 800:
-			#	self.change_y = -10
+		# If it is ok to jump, set our speed upwards
+		if len(self.hitList) > 0 or self.rect.bottom >= 800:
+			self.change_y = -200
+
 #def shout(self, enemy):
 
 # this function was from the player class in pyscroller
 	def calc_grav(self):
 		if self.change_y == 0:
-			self.change_y = 1
+			self.change_y = 5
 		else:
-			self.change_y += .35
+			self.change_y += 2
 
 		# See if we are on the ground.
 		if self.rect.y >= 800 - self.rect.height and self.change_y >= 0:
