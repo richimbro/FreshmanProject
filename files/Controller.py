@@ -17,7 +17,7 @@ class Controller:
 		self.clock = pygame.time.Clock()
 		self.myLevel = Levels.Level()
 		self.counter = 0
-		Level1 = self.myLevel.LevelList[0]
+		Level1 = self.myLevel.LevelList[6]
 		Level2 = self.myLevel.LevelList[random.randrange(4,7)]
 		self.LevelList = [Level1,Level2]
 
