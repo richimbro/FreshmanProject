@@ -154,17 +154,9 @@ class Controller:
 
 	def controlsloop(self):
 		'''shows the player how to play the game'''
-		self.background.fill((69, 245, 66))
-		self.screen.blit(self.background,(0,0))
+		background_image = pygame.image.load("assets/gameData/Controls.png").convert()
+		self.screen.blit(background_image,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
-		message1 = myfont.render("Use the arrow keys to move and space to jump.", False, (0,0,0))
-		self.screen.blit(message1, (self.width/4, self.height/2))
-		message2 = myfont.render("Press M for Menu", False, (0,0,0))
-		self.screen.blit(message2, (self.width/4, self.height/3))
-		message3 = myfont.render("Do  not hit into  the spikes", False, (0,0,0))
-		self.screen.blit(message3, (self.width/4, self.height/1.5))
-		message4 = myfont.render("Good Luck", False, (0,0,0))
-		self.screen.blit(message4, (self.width/4, self.height/1.25))
 		pygame.display.update()
 		while (self.STATE == "CONTROL"):
 			for event in pygame.event.get():
