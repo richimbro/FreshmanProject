@@ -61,6 +61,7 @@ class Controller:
 			self.Hero.update(self.myLevel.currentPlatforms)
 			self.myLevel.genMap(self.myLevel.testMap,self.screen)
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
+			''' player_list.draw(world) ''' #This is what we need, I just do not know how to make it work
 			pygame.display.flip()
 			self.clock.tick(60)
 #####################     Updating Above    #####################
