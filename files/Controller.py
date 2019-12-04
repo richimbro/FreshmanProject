@@ -17,9 +17,8 @@ class Controller:
 		self.clock = pygame.time.Clock()
 		self.myLevel = Levels.Level()
 		self.counter = 0
-		Level1 = self.myLevel.LevelList[6]
-		Level2 = self.myLevel.LevelList[random.randrange(4,7)]
-		self.LevelList = [Level1,Level2]
+		Level1 = self.myLevel.LevelList[random.randrange(0,7)]
+		self.LevelList = [Level1]
 
 
 
@@ -43,7 +42,8 @@ class Controller:
 
 	def gameloop1(self):
 		'''Main loop for the game, wherr the player moves through the level'''
-		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
+		background_image = pygame.image.load("assets/gameData/background.png").convert()
+		self.screen.blit(background_image,(0,0))
 		self.myLevel.genMap(self.LevelList[0],self.screen)
 		self.Hero = Hero.Hero("assets/gameData/player.png", 32 , 32, 60, 352)
 
