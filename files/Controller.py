@@ -62,7 +62,7 @@ class Controller:
 			self.Hero.update(self.myLevel.currentPlatforms)
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
 			self.myLevel.genMap(self.myLevel.testMap,self.screen)
-			
+
 			pygame.display.flip()
 			self.clock.tick(60)
 #####################     Updating Above    #####################

@@ -14,6 +14,7 @@ class Hero(pygame.sprite.Sprite):
 		self.health = 3 #How many lives do we want him having?
 		self.change_x = 0
 		self.change_y = 0
+		self.jumpcounter = 0
 		self.direction = ""
 		self.hitList = []
 
@@ -38,7 +39,7 @@ class Hero(pygame.sprite.Sprite):
 
 		# If it is ok to jump, set our speed upwards
 		if len(self.hitList) > 0 or self.rect.bottom >= 800:
-			self.change_y = -200
+			self.change_y = -30
 
 #def shout(self, enemy):
 
@@ -79,5 +80,4 @@ class Hero(pygame.sprite.Sprite):
 				self.rect.bottom = block.top
 			elif self.change_y < 0:
 				self.rect.top = block.bottom
-		# Stop our vertical movement
-		self.change_y = 0
+			self.change_y = 0

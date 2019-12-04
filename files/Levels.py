@@ -239,7 +239,7 @@ class Level():
 				if platform == '3':
 					display.blit(door,(x*32,y*32))
 				if platform == '4':
-					display.blit(enemy,(x*32,y*32))
+					display.blit(blue,(x*32,y*32))
 					self.currentEnemies.append((pygame.Rect(x*32,y*32,32,32)))
 				if platform == '1' or platform == '2':
 					self.currentPlatforms.append(pygame.Rect(x*32,y*32,32,32))
