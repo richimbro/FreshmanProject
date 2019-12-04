@@ -95,10 +95,9 @@ class Controller:
 	def menuloop(self):
 		'''Home screen for the game to navigate to other screens'''
 		self.background.fill((224, 28, 18))
-		self.screen.blit(self.background,(0,0))
+		background_image = pygame.image.load("assets/gameData/StartScreen.png").convert()
+		self.screen.blit(background_image,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
-		message = myfont.render("Press space to start. Press C for Instructions", False, (0,0,0))
-		self.screen.blit(message, (0, self.height/2))
 		pygame.display.update()
 		while (self.STATE == "MENU"):
 			for event in pygame.event.get():
@@ -113,10 +112,9 @@ class Controller:
 	def deathloop(self):
 		'''shows a message when a player dies  from lava'''
 		self.background.fill((224, 28, 18))
-		self.screen.blit(self.background,(0,0))
+		background_image = pygame.image.load("assets/gameData/DeathScreen.png").convert()
+		self.screen.blit(background_image,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
-		message = myfont.render("You died, press space to continue", False, (0,0,0))
-		self.screen.blit(message, (0, self.height/2))
 		pygame.display.update()
 		while (self.STATE == "DEATH"):
 			for event in pygame.event.get():
@@ -130,11 +128,9 @@ class Controller:
 
 	def winloop(self):
 		'''screen appears when a player wins the level'''
-		self.background.fill((224, 28, 18))
-		self.screen.blit(self.background,(0,0))
+		background_image = pygame.image.load("assets/gameData/WinScreen.png").convert()
+		self.screen.blit(background_image,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
-		message = myfont.render("Congratulations, you won!", False, (0,0,0))
-		self.screen.blit(message, (0, self.height/2))
 		pygame.display.update()
 		while (self.STATE == "WIN"):
 			for event in pygame.event.get():
@@ -143,11 +139,9 @@ class Controller:
 
 	def loadloop(self):
 		'''intermdiate screen between levels'''
-		self.background.fill((224, 28, 18))
-		self.screen.blit(self.background,(0,0))
+		background_image = pygame.image.load("assets/gameData/LoadScreen.png").convert()
+		self.screen.blit(background_image,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
-		message = myfont.render("Press space to continue", False, (0,0,0))
-		self.screen.blit(message, (0, self.height/2))
 		pygame.display.update()
 		while (self.STATE == "LOAD"):
 			for event in pygame.event.get():
