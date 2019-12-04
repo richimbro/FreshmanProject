@@ -21,6 +21,7 @@ class Hero(pygame.sprite.Sprite):
 
 
 	def checkCollide(self, platforms, door,lava):
+		'''checks if the Hero collides  with a platform'''
 		self.hitList = []
 		for tile in platforms:
 			if self.rect.colliderect(tile):
@@ -32,7 +33,7 @@ class Hero(pygame.sprite.Sprite):
 					self.dead = True
 
 
-
+	'''these functions allow a player to move left/right and jump in  a level'''
 	def move_left(self):
 		self.change_x = -10
 		self.direction = "L"
@@ -50,7 +51,7 @@ class Hero(pygame.sprite.Sprite):
 			self.change_y = -20
 
 #def shout(self, enemy):
-
+	'''allows the player to  retain gravity, the player is now able to float back down'''
 # this function was from the player class in pyscroller
 	def calc_grav(self):
 		if self.change_y == 0:
@@ -66,7 +67,7 @@ class Hero(pygame.sprite.Sprite):
 	def update(self, platforms,door,lava):
 		#updated a lot in this function, we have to work on the self.Platform.platform_list
 		#and make it work again, we can work on that tomorrow
-
+		''' updates a players current position and  blits him onto th screen'''
 		self.calc_grav()
 		self.rect.x += self.change_x
 		# See if we hit anything

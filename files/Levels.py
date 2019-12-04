@@ -220,6 +220,7 @@ class Level():
 # Update everythign on this level
 
 	def genMap(self,map,display):
+		'''generates the platform and  ground onto the screen'''
 		green = pygame.image.load("assets/gameData/metal.png")
 		blue = pygame.image.load("assets/gameData/lava.png")
 		door = pygame.image.load("assets/gamedata/doorimage.png")
@@ -250,7 +251,7 @@ class Level():
 	def update(self):
 		self.platform_list.update()
 		self.enemy_list.update()
-
+		'''update and  draw both explained in Hero'''
 	def draw(self, screen):
 		# Draw the background
 		screen.fill(BLUE)

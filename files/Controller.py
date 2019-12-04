@@ -24,6 +24,7 @@ class Controller:
 
 
 	def mainloop(self):
+		'''Loop determining the state of the game'''
 		while True:
 			if(self.STATE == "GAME1"):
 				self.gameloop1()
@@ -41,6 +42,7 @@ class Controller:
 				self.controlsloop()
 
 	def gameloop1(self):
+		'''Main loop for the game, wherr the player moves through the level'''
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
 		self.myLevel.genMap(self.LevelList[0],self.screen)
 		self.Hero = Hero.Hero("assets/gameData/player.png", 32 , 32, 60, 352)
@@ -91,6 +93,7 @@ class Controller:
 
 
 	def menuloop(self):
+		'''Home screen for the game to navigate to other screens'''
 		self.background.fill((224, 28, 18))
 		self.screen.blit(self.background,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
@@ -108,6 +111,7 @@ class Controller:
 						self.STATE = "CONTROL"
 
 	def deathloop(self):
+		'''shows a message when a player dies  from lava'''
 		self.background.fill((224, 28, 18))
 		self.screen.blit(self.background,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
@@ -125,6 +129,7 @@ class Controller:
 						self.STATE = "CONTROL"
 
 	def winloop(self):
+		'''screen appears when a player wins the level'''
 		self.background.fill((224, 28, 18))
 		self.screen.blit(self.background,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
@@ -137,6 +142,7 @@ class Controller:
 					sys.exit()
 
 	def loadloop(self):
+		'''intermdiate screen between levels'''
 		self.background.fill((224, 28, 18))
 		self.screen.blit(self.background,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
@@ -153,6 +159,7 @@ class Controller:
 
 
 	def controlsloop(self):
+		'''shows the player how to play the game'''
 		self.background.fill((69, 245, 66))
 		self.screen.blit(self.background,(0,0))
 		myfont = pygame.font.SysFont(None, 30)
@@ -175,6 +182,7 @@ class Controller:
 
 
 	def endloop(self):
+		'''self explanatory'''
 		self.Hero.kill()
 		myfont = pygame.font.SysFont(None, 30)
 		message = myfont.render("Ayy Lmao", False, (0,0,0))
