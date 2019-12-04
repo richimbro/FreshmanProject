@@ -1,5 +1,6 @@
 import pygame
 import sys
+import random
 from files import Hero
 from files import Platform
 from files import Levels
@@ -15,12 +16,19 @@ class Controller:
 		self.STATE = "MENU"
 		self.clock = pygame.time.Clock()
 		self.myLevel = Levels.Level()
+		self.levelCount = 1
+		Level1 = self.myLevel.LevelList[0]
+		Level2 = self.myLevel.LevelList[random.randrange(4,7)]
+		self.LevelList = [Level1,Level2]
+
 
 
 	def mainloop(self):
 		while True:
-			if(self.STATE == "GAME"):
-				self.gameloop()
+			if(self.STATE == "1"):
+				self.gameloop(0)
+			elif(self.STATE == "2"):
+				self.gameloop(1)
 			elif(self.STATE == "MENU"):
 				self.menuloop()
 			elif(self.STATE == "Exit"):
@@ -28,14 +36,14 @@ class Controller:
 			elif(self.STATE == "CONTROL"):
 				self.controlsloop()
 
-	def gameloop(self):
+	def gameloop(self, num):
 		background_image = pygame.image.load("assets/gameData/background.jpg").convert() #testimage, change later
-		self.myLevel.genMap(self.myLevel.testMap,self.screen)
+		self.myLevel.genMap(self.LevelList[num],self.screen)
 		self.Hero = Hero.Hero("assets/gameData/shittyPlayer.jpg", 32 , 32, 60, 352)
 
 
 		pygame.key.set_repeat(1,50)
-		while self.STATE == "GAME":
+		while self.STATE == str(self.levelCount):
 			#self.background.fill((45, 18, 224))
 			for event in pygame.event.get():
 				if event.type == pygame.QUIT:
@@ -47,7 +55,7 @@ class Controller:
 					elif (event.key == pygame.K_LEFT):
 						self.Hero.move_left()
 					elif(event.key == pygame.K_SPACE):
-						self.Hero.jump(self.myLevel.currentPlatforms)
+						self.Hero.jump(self.myLevel.currentPlatforms, self.myLevel.currentDoor)
 					elif(event.key == pygame.K_q):
 						self.STATE = "MENU"
 				elif event.type == pygame.KEYUP:
@@ -59,9 +67,13 @@ class Controller:
 #####################     Updating Below    #####################
 			self.background.fill((224, 28, 18))
 			self.screen.blit(self.background,(0,0))
-			self.Hero.update(self.myLevel.currentPlatforms)
+			self.Hero.update(self.myLevel.currentPlatforms,self.myLevel.currentDoor)
+			if self.Hero.isTouchingdoor == True:
+				self.Hero.isTouchingdoor = False
+				self.levelCount += 1
+				self.STATE = str(self.levelCount)
 			self.screen.blit(self.Hero.image, (self.Hero.rect.x, self.Hero.rect.y))
-			self.myLevel.genMap(self.myLevel.testMap,self.screen)
+			self.myLevel.genMap(self.LevelList[num],self.screen)
 
 			pygame.display.flip()
 			self.clock.tick(60)
@@ -80,7 +92,7 @@ class Controller:
 					sys.exit()
 				elif event.type == pygame.KEYDOWN:
 					if (event.key == pygame.K_SPACE):
-						self.STATE = "GAME"
+						self.STATE = "1"
 					if (event.key == pygame.K_c):
 						self.STATE = "CONTROL"
 

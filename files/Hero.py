@@ -1,6 +1,5 @@
 import pygame
 import random
-from files import Platform
 
 class Hero(pygame.sprite.Sprite):
 	def __init__(self, image, height, width, x, y):
@@ -17,13 +16,19 @@ class Hero(pygame.sprite.Sprite):
 		self.jumpcounter = 0
 		self.direction = ""
 		self.hitList = []
+		self.isTouchingdoor = False
+		self.enemyList = []
 
 
-	def checkCollide(self, platforms):
+	def checkCollide(self, platforms, door):
 		self.hitList = []
 		for tile in platforms:
 			if self.rect.colliderect(tile):
 					self.hitList.append(tile)
+		if self.rect.colliderect(door):
+			self.isTouchingdoor = True
+
+
 
 	def move_left(self):
 		self.change_x = -10
@@ -31,10 +36,10 @@ class Hero(pygame.sprite.Sprite):
 	def move_right(self):
 		self.change_x = 10
 		self.direction = "R"
-	def jump(self,platforms): #going to have to fix this
+	def jump(self,platforms, door): #going to have to fix this
 
 		self.rect.y += 2
-		self.checkCollide(platforms)
+		self.checkCollide(platforms, door)
 		self.rect.y -= 2
 
 		# If it is ok to jump, set our speed upwards
@@ -55,14 +60,14 @@ class Hero(pygame.sprite.Sprite):
 			self.change_y = 0
 			self.rect.y = 800 - self.rect.height
 
-	def update(self, platforms):
+	def update(self, platforms,door):
 		#updated a lot in this function, we have to work on the self.Platform.platform_list
 		#and make it work again, we can work on that tomorrow
 
 		self.calc_grav()
 		self.rect.x += self.change_x
 		# See if we hit anything
-		self.checkCollide(platforms)
+		self.checkCollide(platforms,door)
 		for block in self.hitList:
 		# set our right side to the left side of the item we hit
 			if self.change_x > 0:
@@ -73,7 +78,7 @@ class Hero(pygame.sprite.Sprite):
 
 		self.rect.y += self.change_y
 		# Check and see if we hit anything
-		self.checkCollide(platforms)
+		self.checkCollide(platforms, door)
 		for block in self.hitList:
 		# Reset our position based on the top/bottom of the object.
 			if self.change_y > 0:
